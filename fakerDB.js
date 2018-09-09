@@ -11,8 +11,29 @@ var customersTable = db.prepare('INSERT INTO Customers VALUEs (@Id, @FirstName, 
 var computersTable = db.prepare('INSERT INTO Computers VALUES (@Id, @PurchaseDate, @DecomissionDate, @OS, @Brand, @Status)')
 var paymentTypesTable = db.prepare('INSERT INTO PaymentTypes VALUES (@Id, @Type, @AcctNum, @ExpDate, @SecCode) ')
 var productsTable = db.prepare('INSERT INTO Products VALUES (@Id, @Title, @Price, @ProdDescription, @Quantity, @CustomerId, @ProductTypeId)')
+var employeeTraining = db.prepare('INSERT INTO EmployeeTraining VALUES (@Id, @EmployeeId, @TrainingProgramId)')
+var ordersTable = db.prepare('INSERT INTO Orders VALUES (@Id, @ProductId, @PaymentTypeId, @CustomerId)')
 
 console.log("SEEDING...")
+
+const seedOrdersTable = (howMany) => {
+    for (let i = 0; i < howMany; i++) {
+        let prodId = Math.floor((Math.random()*100)+1)
+        let paymentTypeId = Math.floor((Math.random() * 100) + 1)
+    }
+}
+
+const seedEmployeeTrainingTable = (howMany) => {
+    for (let i = 0; i < howMany; i++) {
+        let empId = Math.floor((Math.random()*100)+1)
+        let trainId = Math.floor((Math.random() * 20) + 1)
+        employeeTraining.run({
+            Id: null,
+            EmployeeId: empId,
+            TrainingProgramId: trainId
+        })
+    }
+}
 
 const seedProductsTable = (howMany) => {
     for (let i = 0; i < howMany; i++) {
@@ -149,11 +170,12 @@ const seedEmployeeTable = (howMany, departments) => {
 }
 
 
-// seedDepartmentTable(20)
-// seedEmployeeTable(100, 20)
-// seedTrainingTable(20)
-// seedProductTypesTable(10)
-// seedCustomersTable(50)
-// seedComputersTable(30)
-// seedPaymentTypesTable(50)
+seedDepartmentTable(20)
+seedEmployeeTable(100, 20)
+seedTrainingTable(20)
+seedProductTypesTable(10)
+seedCustomersTable(50)
+seedComputersTable(30)
+seedPaymentTypesTable(50)
 seedProductsTable(100)
+seedEmployeeTrainingTable(50)
