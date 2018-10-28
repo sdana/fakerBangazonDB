@@ -24,6 +24,8 @@ const seedOrdersTable = (howMany) => {
 }
 
 const seedEmployeeTrainingTable = (howMany) => {
+    // let numberOfEmployees = db.prepare('SELECT COUNT(Id) FROM Employee')
+    // let returnedNumber = numberOfEmployees.get()
     for (let i = 0; i < howMany; i++) {
         let empId = Math.floor((Math.random()*100)+1)
         let trainId = Math.floor((Math.random() * 20) + 1)
@@ -169,13 +171,12 @@ const seedEmployeeTable = (howMany, departments) => {
     }
 }
 
-
-seedDepartmentTable(20)
-seedEmployeeTable(100, 20)
-seedTrainingTable(20)
-seedProductTypesTable(10)
-seedCustomersTable(50)
-seedComputersTable(30)
-seedPaymentTypesTable(50)
-seedProductsTable(100)
-seedEmployeeTrainingTable(50)
+// seedDepartmentTable(20)
+// seedEmployeeTable(100, 20)
+// seedTrainingTable(20)
+// seedProductTypesTable(10)
+// seedCustomersTable(50)
+// seedComputersTable(30)
+// seedPaymentTypesTable(50)
+// seedProductsTable(100)
+// seedEmployeeTrainingTable(50)
